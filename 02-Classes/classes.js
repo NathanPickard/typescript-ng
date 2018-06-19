@@ -1,38 +1,26 @@
 // Classes allow us to create 'blueprints' for objects
 // In Angular 2 we use classes a lot. For example to create Components, Services, Directives, Pipes, ...
-
 // How to create a class
-
-class Car {
-    engineName: string;
-    gears: number;
-    private speed: number;
-
-    constructor(speed: number) {
+var Car = /** @class */ (function () {
+    function Car(speed) {
         this.speed = speed || 0;
     }
-
-    accelerate(): void {
+    Car.prototype.accelerate = function () {
         this.speed++;
-    }
-
-    throttle(): void {
+    };
+    Car.prototype.throttle = function () {
         this.speed--;
-    }
-
-    getSpeed(): void {
+    };
+    Car.prototype.getSpeed = function () {
         console.log(this.speed);
-    }
-
-    static numberOfWheels(): number {
+    };
+    Car.numberOfWheels = function () {
         return 4;
-    }
-}
-
+    };
+    return Car;
+}());
 // Instantiate (create) an object from a class
-
-let car = new Car(5);
+var car = new Car(5);
 car.accelerate();
 car.getSpeed();
-
 console.log(Car.numberOfWheels());
